@@ -25,7 +25,9 @@ class _AddNewPageState extends State<AddNewPage> {
               child: Padding(
                 padding: EdgeInsets.only(left: 5, top: 20, bottom: 20),
                 child: GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).pop();
+                    },
                     child: Text('Cancel',
                         style: TextStyle(
                           color: Theme.Colors.blue,

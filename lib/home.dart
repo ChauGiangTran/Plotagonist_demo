@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
               width: 250,
               color: Color(0xFFb20a2c),
               padding: const EdgeInsets.all(10.0),
-              child: const Text('Demo splash screen',
+              child: const Text('Demo editor',
                   textAlign: TextAlign.center, style: TextStyle(fontSize: 20)),
             ),
           ),
@@ -36,8 +36,7 @@ class _HomePageState extends State<HomePage> {
           RaisedButton(
             onPressed: () {
               Navigator.push(
-                context, MaterialPageRoute(builder: (_) => MuseOnePage())
-              );
+                  context, MaterialPageRoute(builder: (_) => MuseOnePage()));
             },
             textColor: Colors.white,
             padding: const EdgeInsets.all(0.0),
@@ -45,7 +44,7 @@ class _HomePageState extends State<HomePage> {
               width: 250,
               color: Color(0xFF22c1c3),
               padding: const EdgeInsets.all(10.0),
-              child: const Text('Demo editor',
+              child: const Text('Demo muse',
                   textAlign: TextAlign.center, style: TextStyle(fontSize: 20)),
             ),
           ),
