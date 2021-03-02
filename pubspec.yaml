@@ -71,6 +71,14 @@ flutter:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
+
+  fonts:
+    - family: SFProText
+      fonts:
+        - asset: assets/fonts/SFProText-Regular.ttf
+        - asset: assets/fonts/SFProText-Bold.ttf
+          weight: 600
+        - asset: assets/fonts/Lato-Regular.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
