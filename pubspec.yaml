@@ -83,6 +83,8 @@ flutter:
         - asset: assets/fonts/SFProText-Regular.ttf
         - asset: assets/fonts/SFProText-Bold.ttf
           weight: 600
+    - family: Lato
+      fonts:
         - asset: assets/fonts/Lato-Regular.ttf
   #
   # For details regarding fonts from package dependencies,
