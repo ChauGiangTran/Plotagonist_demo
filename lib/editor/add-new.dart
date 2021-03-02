@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hashtagable/hashtagable.dart';
 import '../utils/theme.dart' as Theme;
+import 'test.dart';
 
 class AddNewPage extends StatefulWidget {
   @override
@@ -8,8 +10,11 @@ class AddNewPage extends StatefulWidget {
 }
 
 class _AddNewPageState extends State<AddNewPage> {
+  String text = '@Robin goes to the #cliffs';
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Container(
         color: Colors.white,
         child: SafeArea(
@@ -188,19 +193,37 @@ class _AddNewPageState extends State<AddNewPage> {
                             ],
                           )),
                       Container(
+                        height: height / 2,
                         margin: new EdgeInsets.only(left: 15, right: 15),
-                        child: TextFormField(
-                            keyboardType: TextInputType.multiline,
-                            initialValue: '@Robin goes to the #cliffs',
-                            maxLines: null,
-                            style: TextStyle(
-                              fontSize: 15,
-                              color: Theme.Colors.grey200,
-                              fontFamily: 'Lato',
-                            ),
-                            decoration: new InputDecoration(
-                              border: InputBorder.none,
-                            )),
+                        child:
+                            // TextFormField(
+                            //     controller: MyTextController(),
+                            //     keyboardType: TextInputType.multiline,
+                            //     maxLines: null,
+                            //     style: TextStyle(
+                            //       fontSize: 15,
+                            //       color: Theme.Colors.orange,
+                            //       fontFamily: 'Lato',
+                            //     ),
+                            //     decoration: new InputDecoration(
+                            //       border: InputBorder.none,
+                            //     )),
+                            HashTagTextField(
+                                keyboardType: TextInputType.multiline,
+                                maxLines: null,
+                                decoratedStyle: TextStyle(
+                                  fontSize: 15,
+                                  color: Theme.Colors.orange,
+                                  fontFamily: 'Lato',
+                                ),
+                                basicStyle: TextStyle(
+                                  fontSize: 15,
+                                  color: Theme.Colors.grey200,
+                                  fontFamily: 'Lato',
+                                ),
+                                decoration: new InputDecoration(
+                                  border: InputBorder.none,
+                                )),
                       ),
                     ],
                   )),
@@ -224,17 +247,32 @@ class _AddNewPageState extends State<AddNewPage> {
                     children: [
                       Align(
                         alignment: Alignment.bottomRight,
-                        child: RaisedButton(
-                            onPressed: () {},
+                        child: SizedBox(
+                          width: 36,
+                          height: 36,
+                          child: RaisedButton(
+                            elevation: 0,
+                            padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                            ),
+                            onPressed: () {
+                              showAlertDialog(context);
+                            },
+                            color: Colors.white,
                             child: RotationTransition(
                               turns: new AlwaysStoppedAnimation(30 / 360),
-                              child: Icon(Icons.attach_file,
-                                  color: Colors.black, size: 32),
+                              child: Icon(
+                                Icons.attach_file,
+                                color: Colors.black,
+                                size: 32,
+                              ),
                             ),
-                            elevation: 0,
-                            color: Colors.white),
+                          ),
+                        ),
                       ),
                       Container(
+                        margin: EdgeInsets.only(top: 10),
                         height: 50,
                         color: Theme.Colors.grey100,
                         padding: new EdgeInsets.symmetric(horizontal: 15.0),
@@ -302,15 +340,106 @@ class _AddNewPageState extends State<AddNewPage> {
                   ))
                 ],
               )),
-          // floatingActionButton: FloatingActionButton(
-          //   onPressed: () {},
-          //   child: RotationTransition(
-          //     turns: new AlwaysStoppedAnimation(30 / 360),
-          //     child: Icon(Icons.attach_file, color: Colors.black),
-          //   ),
-          //   backgroundColor: Colors.white,
-          //   elevation: 0,
-          // ),
         )));
   }
+}
+
+showAlertDialog(BuildContext context) {
+  // set up the list options
+  Widget optionOne = SimpleDialogOption(
+    child: Text('Camera',
+        textAlign: TextAlign.center,
+        style: TextStyle(
+            fontFamily: 'SFProText',
+            fontWeight: FontWeight.w600,
+            color: Theme.Colors.blue,
+            fontSize: 17)),
+    onPressed: () {
+      Navigator.of(context).pop();
+    },
+  );
+  Widget optionTwo = SimpleDialogOption(
+    child: const Text('Media Library',
+        textAlign: TextAlign.center,
+        style: TextStyle(
+            fontFamily: 'SFProText', color: Theme.Colors.blue, fontSize: 17)),
+    onPressed: () {
+      Navigator.of(context).pop();
+    },
+  );
+  Widget optionThree = SimpleDialogOption(
+    child: const Text('Files',
+        textAlign: TextAlign.center,
+        style: TextStyle(
+            fontFamily: 'SFProText', color: Theme.Colors.blue, fontSize: 17)),
+    onPressed: () {
+      Navigator.of(context).pop();
+    },
+  );
+  Widget optionFour = SimpleDialogOption(
+    child: const Text('Unsplash Photos',
+        textAlign: TextAlign.center,
+        style: TextStyle(
+            fontFamily: 'SFProText', color: Theme.Colors.blue, fontSize: 17)),
+    onPressed: () {
+      Navigator.of(context).pop();
+    },
+  );
+  Widget optionFive = SimpleDialogOption(
+    child: const Text('Cancel',
+        textAlign: TextAlign.center,
+        style: TextStyle(
+            fontFamily: 'SFProText', color: Theme.Colors.blue, fontSize: 17)),
+    onPressed: () {
+      Navigator.of(context).pop();
+    },
+  );
+
+  // set up the SimpleDialog
+  SimpleDialog dialog = SimpleDialog(
+    shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(15.0))),
+    children: <Widget>[
+      Container(
+          width: 270,
+          padding: EdgeInsets.only(left: 15, right: 15, top: 10),
+          child: Column(
+            children: [
+              Column(
+                children: [
+                  Text('Add attachment',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontFamily: 'SFProText',
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black,
+                          fontSize: 16)),
+                  SizedBox(height: 10),
+                  Text(
+                      'Please select the location of the media you want to attach',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontFamily: 'SFProText',
+                          color: Colors.black,
+                          fontSize: 12)),
+                  SizedBox(height: 20),
+                  optionOne,
+                  optionTwo,
+                  optionThree,
+                  optionFour,
+                  optionFive,
+                ],
+              ),
+            ],
+          ))
+    ],
+  );
+
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return dialog;
+    },
+  );
 }
