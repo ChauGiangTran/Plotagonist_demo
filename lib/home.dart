@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './editor/add-new.dart';
+import './Muse/muse_one.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -33,7 +34,11 @@ class _HomePageState extends State<HomePage> {
           ),
           SizedBox(height: 15),
           RaisedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context, MaterialPageRoute(builder: (_) => MuseOnePage())
+              );
+            },
             textColor: Colors.white,
             padding: const EdgeInsets.all(0.0),
             child: Container(
