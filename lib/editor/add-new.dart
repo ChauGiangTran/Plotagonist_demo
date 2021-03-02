@@ -13,7 +13,6 @@ class _AddNewPageState extends State<AddNewPage> {
   String text = '@Robin goes to the #cliffs';
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Container(
         color: Colors.white,
@@ -195,7 +194,7 @@ class _AddNewPageState extends State<AddNewPage> {
                             ],
                           )),
                       Container(
-                        height: height / 2,
+                        height: height / 2 - 180,
                         margin: new EdgeInsets.only(left: 15, right: 15),
                         child:
                             // TextFormField(
